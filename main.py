@@ -39,7 +39,7 @@ class ParentWindow(QMainWindow, main_gui.Ui_MainWindow):
     username_sql = 'asterisk'
     password_sql = 'asterisk'
 
-    ring_in_day = 18000  # Количество звонков в день
+    ring_in_day = 12000  # Количество звонков в день
     bd_fiz = 'asterisk.obzvon_number'
     bd_ul = 'asterisk.obzvon_ul'
 

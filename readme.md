@@ -9,7 +9,8 @@
 
 Дополнительные материалы:
 
-docker-compose -f docker-compose.yml up
+Презентация
+
 ivr_table_DDL.txt - необходимые таблицы
 
 extensions.conf - dialplan для Asterisk
