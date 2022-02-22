@@ -1,0 +1,96 @@
+CREATE TABLE `cdr` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `calldate` datetime NOT NULL,
+  `clid` varchar(80) CHARACTER SET cp1251 COLLATE cp1251_general_ci NOT NULL,
+  `src` varchar(80) NOT NULL DEFAULT 'unknown number',
+  `dst` varchar(80) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL DEFAULT '',
+  `dcontext` varchar(80) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL DEFAULT '',
+  `channel` varchar(80) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL DEFAULT '',
+  `dstchannel` varchar(80) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL DEFAULT '',
+  `lastapp` varchar(80) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL DEFAULT '',
+  `lastdata` varchar(2000) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL DEFAULT '',
+  `duration` int(11) NOT NULL DEFAULT '0',
+  `billsec` int(11) NOT NULL DEFAULT '0',
+  `disposition` varchar(45) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL DEFAULT '',
+  `amaflags` int(11) NOT NULL DEFAULT '0',
+  `accountcode` varchar(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL DEFAULT '',
+  `uniqueid` varchar(32) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL DEFAULT '',
+  `userfield` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL DEFAULT '',
+  `did` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`,`dcontext`),
+  KEY `calldate` (`calldate`),
+  KEY `accountcode` (`accountcode`),
+  KEY `uniqueid` (`uniqueid`),
+  KEY `dst` (`dst`),
+  KEY `src` (`src`),
+  KEY `idx_cdr_clid` (`clid`)
+) ENGINE=InnoDB AUTO_INCREMENT=2181443 DEFAULT CHARSET=utf8
+
+
+
+CREATE TABLE `kvlit` (
+  `n` varchar(255) NOT NULL,
+  `n1` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`n`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
+
+
+CREATE TABLE `domlit` (
+  `n` varchar(255) NOT NULL,
+  `n1` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`n`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
+
+
+CREATE TABLE `lics` (
+  `lic` bigint(20) NOT NULL,
+  `number` bigint(10) DEFAULT NULL,
+  `aio` varchar(255) DEFAULT NULL,
+  `pol` bit(1) DEFAULT NULL,
+  `filial` int(11) DEFAULT NULL,
+  `uchastok` int(11) DEFAULT NULL,
+  `np` varchar(255) DEFAULT NULL,
+  `ul` varchar(255) DEFAULT NULL,
+  `dom` int(11) DEFAULT NULL,
+  `domlit` varchar(255) DEFAULT NULL,
+  `kv` int(11) DEFAULT NULL,
+  `kvlit` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`lic`),
+  KEY `idx_lics_np` (`np`),
+  KEY `idx_lics_ul` (`ul`),
+  KEY `idx_lics_domlit` (`domlit`),
+  KEY `idx_lics_kvlit` (`kvlit`),
+  KEY `idx_lics_number` (`number`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
+
+
+CREATE TABLE `np` (
+  `n` varchar(255) NOT NULL,
+  `n1` varchar(255) DEFAULT NULL,
+  `id` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`n`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
+
+
+CREATE TABLE `obzvon_number` (
+  `num` bigint(20) NOT NULL,
+  `lic` bigint(20) NOT NULL,
+  `number` bigint(20) NOT NULL,
+  `summa` float DEFAULT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`),
+  KEY `idx_obzvon_by_number_num_lic` (`num`,`lic`),
+  KEY `idx_obzvon_by_number_lic` (`lic`)
+) ENGINE=InnoDB AUTO_INCREMENT=2023376 DEFAULT CHARSET=utf8
+
+
+CREATE TABLE `ul` (
+  `n` varchar(255) NOT NULL,
+  `n1` varchar(255) DEFAULT NULL,
+  `id` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`n`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
+
+
+
+
